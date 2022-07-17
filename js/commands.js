@@ -50,5 +50,3 @@ module.exports = {
         return;
     }
 }
-
-// Licensed under MIT License Copyright (c) 2022 TommyYOyoyo
