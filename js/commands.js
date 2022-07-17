@@ -21,7 +21,7 @@ module.exports = {
         } else if (randnum > 20 && randnum <= 50) {
             message.reply(`${target} walked away before ${message.author} could kill him `)
         } else {
-            message.reply(`${target} accidently put a carrot in his shotgun and killed himself. `)
+            message.reply(`${message.author} accidently put a carrot in his shotgun and killed himself. `)
         }
         return;
     },
