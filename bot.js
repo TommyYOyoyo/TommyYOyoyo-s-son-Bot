@@ -10,8 +10,6 @@ const {
     Intents
 } = require('discord.js');
 
-// Under MIT License, Copyright (c) 2022 TommyYOyoyo
-
 // Create a new client instance
 const client = new Client({
     intents: ["GUILDS",
@@ -53,7 +51,9 @@ lmaoReplies = ["yessir", "👍", "LMFAOO", "yes, lol!", "LOLLL", "_ _", "...", "
 
 client.on("messageCreate", (message) => {
     var botMem =  message.guild.me
+
     // auto message replies
+
     if (message.channel.permissionsFor(message.client.user).has('SEND_MESSAGES')) {
         //console.log('yes')
         var LowercasedMsg = message.content.toLowerCase()
@@ -101,50 +101,18 @@ client.on("messageCreate", (message) => {
                     message.reply(lmaoReplies[Math.floor(Math.random() * lmaoReplies.length)])
                 }
                 break;
+
             // commands here . . .
+
             case (message.content.toLowerCase().startsWith(prefix) && !message.author.bot):
                 var arg = message.content.slice(prefix.length + 1).toLowerCase()
                 switch (true) {
                     case arg.startsWith("resurrect"):
-                        var target = arg.slice("resurrect".length + 1, message.content.indexOf(">") - 3)
-                        console.log(target)
-                        if (!target.startsWith("<@") && !target == "") {
-                            message.reply("The user you wanted to resurrect is not a valid user.")
-                            break;
-                        }
-                        if (target == "") {
-                            var target = `${message.author}`
-                        }
-                        var randnum = Math.floor(Math.random() * 100)
-                        if (randnum > 30 && randnum <= 100) {
-                            message.reply(`${target} was brought back to the world by an angel :innocent: `)
-                        } else if (randnum > 20 && randnum < 30) {
-                            message.reply(`${target} was not resurrected because no angels are working rn. :joy: `)
-                        } else {
-                            message.reply(`${target} landed back to the world in a volcano and burned alive :crying_cat_face: `)
-                        }
-                        break;
+                        commands.resurrect({arg: arg, message: message})
+                        
                     case arg.startsWith("kill"):
-                        //commands.kill(arg)
-                        var target = arg.slice("kill".length + 1, message.content.indexOf(">") - 3)
-                        if (!target.startsWith("<@") && !target == "") {
-                            message.reply("The user you wanted to kill is not a valid user.")
-                            break;
-                        }
-                        if (target == "") {
-                            var target = `${message.author}`
-                            message.reply(`${message.author} suicided.`);
-                            break;
-                        }
-                        var randnum = Math.floor(Math.random() * 100)
-                        if (randnum > 50 && randnum <= 100) {
-                            message.reply(`${message.author} blow off the head of ${target} with a shotgun, oof `)
-                        } else if (randnum > 20 && randnum <= 50) {
-                            message.reply(`${target} walked away before ${message.author} could kill him `)
-                        } else {
-                            message.reply(`${target} accidently put a carrot in his shotgun and killed himself. `)
-                        }
-                        break;
+                        commands.kill({arg: arg, message: message})
+
                     case arg.startsWith("setchannel"):
                         var setchannel = arg.slice("setchannel".length + 1, message.content.indexOf(">") - 3);
                         console.log(setchannel);
@@ -160,3 +128,5 @@ const tmyYYYWelcomeChannelId = "882038730918080563"
 /*client.on("guildMemberAdd", (member) => {
     member.guild.channels.cache.get(member.channelId).send(`${member} Omg hiii!`)
 })*/
+
+// Licensed under MIT License Copyright (c) 2022 TommyYOyoyo
