@@ -128,5 +128,3 @@ const tmyYYYWelcomeChannelId = "882038730918080563"
 /*client.on("guildMemberAdd", (member) => {
     member.guild.channels.cache.get(member.channelId).send(`${member} Omg hiii!`)
 })*/
-
-// Licensed under MIT License Copyright (c) 2022 TommyYOyoyo
