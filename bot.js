@@ -1,6 +1,7 @@
 // to do list: 2. importing from other files 3. welcome message 4. help command 5. other functions
 
 let commands = require('./js/commands.js')
+let replies = require('./js/replies.js')
 
 require('dotenv').config()
 
@@ -59,47 +60,37 @@ client.on("messageCreate", (message) => {
         var LowercasedMsg = message.content.toLowerCase()
         switch (true) {
             case message.content == "who is your mom":
-                message.reply("Suuuuuuuri!!! <3");
+                replies.whosmomReply(message);
                 break;
             case message.content == "who is your dad":
-                message.reply("Tommmmmyyyyyyy!!! <3");
+                replies.whosdadReply(message);
                 break;
             case message.content.toLowerCase() == "shut up" && !message.author.bot:
-                message.reply(shutReplies[Math.floor(Math.random() * shutReplies.length)]);
+                replies.shutupReply(message);
                 break;
             case message.content.toLowerCase() == "stfu" && !message.author.bot:
-                message.reply(stfuReplies[Math.floor(Math.random() * stfuReplies.length)]);
+                replies.stfuReply(message);
                 break;
             case message.content.toLowerCase().indexOf("so mean") > -1 && !message.author.bot:
-                message.reply(meanReplies[Math.floor(Math.random() * meanReplies.length)]);
+                replies.meanReply(message);
                 break;
             case message.content.indexOf("😂") > -1 && !message.author.bot:
-                message.reply("😂😂😂");
+                replies.joyReply(message);
                 break;
             case message.content == "hi babe":
-                message.reply("hello there~~~")
+                replies.babeReply(message);
                 break;
             case message.content == "hey kid" || message.content == "hi kid":
-                var hkreply = heykidReplies[Math.floor(Math.random() * heykidReplies.length)]
-                if (hkreply == heykidReplies[3]) {
-                    if (message.author != process.env.BABYSIT) {
-                        var hkreply = heykidReplies[Math.floor(Math.random() * heykidReplies.length) - 1]
-                    } else {
-                        var hkreply = hkreply
-                    }
-                }
-                message.reply(hkreply);
+                replies.hikidReply(message);
                 break;
             case message.content == "hi kiddo" || message.content == "hey kiddo":
-                message.reply(hikiddoReplies[Math.floor(Math.random() * hikiddoReplies.length)]);
+                replies.hikiddoReply(message);
                 break;
             case message.content == "hey kid lets have some fun" && message.author == process.env.BABYSIT:
-                message.reply(havefunReplies[Math.floor(Math.random() * havefunReplies.length)]);
+                replies.havefunReply(message);
                 break;
             case LowercasedMsg == "lmao" || LowercasedMsg == "lol" || LowercasedMsg == "lmfao":
-                if (message.author != myId) {
-                    message.reply(lmaoReplies[Math.floor(Math.random() * lmaoReplies.length)])
-                }
+                replies.lolReply(message, myId);
                 break;
 
             // commands here . . .
