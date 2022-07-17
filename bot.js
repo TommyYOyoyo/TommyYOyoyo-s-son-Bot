@@ -31,7 +31,7 @@ http.createServer(function (req, res) {
 }).listen(8080);
 
 
-myId = process.env.BOT_ID
+let myId = process.env.BOT_ID
 
 // When the client is ready, run this code (only once)
 client.on('ready', () => {
@@ -41,13 +41,13 @@ client.on('ready', () => {
     }), 5000)
 });
 
-shutReplies = ["ok", "no", "no you", "umm", ".", "_ _", "*😏*"]
-hikiddoReplies = ["Hi old man.", "Hey!!!", "hi, kim jong-un", "go away i hate you", "hi, joe biden"]
-heykidReplies = ["go away", 'hi, "adult"', "Don't call me a kid :(((", "Hello I want another babysitter ouainnnnnnnn..."]
-havefunReplies = ["I want another babysitter ouainnnnnnnn...", "I dont like you go away", "YEETTTT"]
-stfuReplies = ["no you.", "ok", "nah im never going to stfu its literally impossible", "no pls", "nah sry"]
-meanReplies = ["yes!", "meaaan!", "👎", "👍", "nah", "agreed", "disagreed."]
-lmaoReplies = ["yessir", "👍", "LMFAOO", "yes, lol!", "LOLLL", "_ _", "...", "🤔", "**LMAO**", "bro", "LOL", "LMFAO"]
+let shutReplies = ["ok", "no", "no you", "umm", ".", "_ _", "*😏*"]
+let hikiddoReplies = ["Hi old man.", "Hey!!!", "hi, kim jong-un", "go away i hate you", "hi, joe biden"]
+let heykidReplies = ["go away", 'hi, "adult"', "Don't call me a kid :(((", "Hello I want another babysitter ouainnnnnnnn..."]
+let havefunReplies = ["I want another babysitter ouainnnnnnnn...", "I dont like you go away", "YEETTTT"]
+let stfuReplies = ["no you.", "ok", "nah im never going to stfu its literally impossible", "no pls", "nah sry"]
+let meanReplies = ["yes!", "meaaan!", "👎", "👍", "nah", "agreed", "disagreed."]
+let lmaoReplies = ["yessir", "👍", "LMFAOO", "yes, lol!", "LOLLL", "_ _", "...", "🤔", "**LMAO**", "bro", "LOL", "LMFAO"]
 
 client.on("messageCreate", (message) => {
     var botMem =  message.guild.me
@@ -108,10 +108,12 @@ client.on("messageCreate", (message) => {
                 var arg = message.content.slice(prefix.length + 1).toLowerCase()
                 switch (true) {
                     case arg.startsWith("resurrect"):
-                        commands.resurrect({arg: arg, message: message})
+                        commands.resurrect({arg: arg, message: message});
+                        break;
                         
                     case arg.startsWith("kill"):
-                        commands.kill({arg: arg, message: message})
+                        commands.kill({arg: arg, message: message});
+                        break;
 
                     case arg.startsWith("setchannel"):
                         var setchannel = arg.slice("setchannel".length + 1, message.content.indexOf(">") - 3);
