@@ -1,4 +1,4 @@
-// to do list: 1. permission error handling 2. importing from other files 3. welcome message 4. help command 5. other functions
+// to do list: 2. importing from other files 3. welcome message 4. help command 5. other functions
 
 let commands = require('./js/commands.js')
 
@@ -9,6 +9,8 @@ const {
     Client,
     Intents
 } = require('discord.js');
+
+// Under MIT License, Copyright (c) 2022 TommyYOyoyo
 
 // Create a new client instance
 const client = new Client({
@@ -51,7 +53,8 @@ lmaoReplies = ["yessir", "👍", "LMFAOO", "yes, lol!", "LOLLL", "_ _", "...", "
 
 client.on("messageCreate", (message) => {
     var botMem =  message.guild.me
-    if (message.guild.me.permissions.has('SEND_MESSAGES')) {
+    // auto message replies
+    if (message.channel.permissionsFor(message.client.user).has('SEND_MESSAGES')) {
         //console.log('yes')
         var LowercasedMsg = message.content.toLowerCase()
         switch (true) {
@@ -98,6 +101,7 @@ client.on("messageCreate", (message) => {
                     message.reply(lmaoReplies[Math.floor(Math.random() * lmaoReplies.length)])
                 }
                 break;
+            // commands here . . .
             case (message.content.toLowerCase().startsWith(prefix) && !message.author.bot):
                 var arg = message.content.slice(prefix.length + 1).toLowerCase()
                 switch (true) {
