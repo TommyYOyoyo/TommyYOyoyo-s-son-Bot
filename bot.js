@@ -1,4 +1,4 @@
-// to do list: 2. importing from other files 3. welcome message 4. help command 5. other functions
+// to do list: 3. welcome message 4. help command 5. other functions
 
 let commands = require('./js/commands.js')
 let replies = require('./js/replies.js')
@@ -56,7 +56,6 @@ client.on("messageCreate", (message) => {
     // auto message replies
 
     if (message.channel.permissionsFor(message.client.user).has('SEND_MESSAGES')) {
-        //console.log('yes')
         var LowercasedMsg = message.content.toLowerCase()
         switch (true) {
             case message.content == "who is your mom":
@@ -96,6 +95,7 @@ client.on("messageCreate", (message) => {
             // commands here . . .
 
             case (message.content.toLowerCase().startsWith(prefix) && !message.author.bot):
+                var originalArg = message.content.slice(prefix.length + 1)
                 var arg = message.content.slice(prefix.length + 1).toLowerCase()
                 switch (true) {
                     case arg.startsWith("resurrect"):
@@ -110,6 +110,9 @@ client.on("messageCreate", (message) => {
                         var setchannel = arg.slice("setchannel".length + 1, message.content.indexOf(">") - 3);
                         console.log(setchannel);
                         break;
+                        
+                    case arg.startsWith("nuke"):
+                        commands.nuke({arg: arg, message: message, originalArg: originalArg});
                 }
         }
     } else {
