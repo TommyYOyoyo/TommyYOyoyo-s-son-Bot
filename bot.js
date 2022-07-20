@@ -42,14 +42,6 @@ client.on('ready', () => {
     }), 5000)
 });
 
-let shutReplies = ["ok", "no", "no you", "umm", ".", "_ _", "*😏*"]
-let hikiddoReplies = ["Hi old man.", "Hey!!!", "hi, kim jong-un", "go away i hate you", "hi, joe biden"]
-let heykidReplies = ["go away", 'hi, "adult"', "Don't call me a kid :(((", "Hello I want another babysitter ouainnnnnnnn..."]
-let havefunReplies = ["I want another babysitter ouainnnnnnnn...", "I dont like you go away", "YEETTTT"]
-let stfuReplies = ["no you.", "ok", "nah im never going to stfu its literally impossible", "no pls", "nah sry"]
-let meanReplies = ["yes!", "meaaan!", "👎", "👍", "nah", "agreed", "disagreed."]
-let lmaoReplies = ["yessir", "👍", "LMFAOO", "yes, lol!", "LOLLL", "_ _", "...", "🤔", "**LMAO**", "bro", "LOL", "LMFAO"]
-
 client.on("messageCreate", (message) => {
     var botMem =  message.guild.me
 
