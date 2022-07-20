@@ -24,14 +24,6 @@ const prefix = 'tys';
 // Login to Discord with your client's token
 client.login(process.env.BOT_TOKEN);
 
-var http = require('http');
-
-http.createServer(function (req, res) {
-    res.write("I'm alive");
-    res.end();
-}).listen(8080);
-
-
 let myId = process.env.BOT_ID
 
 // When the client is ready, run this code (only once)
@@ -50,6 +42,7 @@ client.on("messageCreate", (message) => {
     if (message.channel.permissionsFor(message.client.user).has('SEND_MESSAGES')) {
         var LowercasedMsg = message.content.toLowerCase()
         switch (true) {
+            /*
             case message.content == "who is your mom":
                 replies.whosmomReply(message);
                 break;
@@ -83,9 +76,9 @@ client.on("messageCreate", (message) => {
             case LowercasedMsg == "lmao" || LowercasedMsg == "lol" || LowercasedMsg == "lmfao":
                 replies.lolReply(message, myId);
                 break;
-
+*/
             // commands here . . .
-
+            
             case (message.content.toLowerCase().startsWith(prefix) && !message.author.bot):
                 var originalArg = message.content.slice(prefix.length + 1)
                 var arg = message.content.slice(prefix.length + 1).toLowerCase()
@@ -112,7 +105,8 @@ client.on("messageCreate", (message) => {
     }
 })
 
-const tmyYYYWelcomeChannelId = "882038730918080563"
-/*client.on("guildMemberAdd", (member) => {
-    member.guild.channels.cache.get(member.channelId).send(`${member} Omg hiii!`)
-})*/
+client.on("messageCreate", (message) => {
+    if(message.channelId == process.env.DANK_TRENDING_AC && !message.author.bot){
+      message.reply("<@&958883453707907173>")
+    }
+})
