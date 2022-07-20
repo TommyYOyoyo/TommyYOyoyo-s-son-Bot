@@ -19,7 +19,6 @@ module.exports = {
             return;
         }
         var target = arg.slice("kill".length + 1, message.content.indexOf(">") - 3)
-        console.log(target)
         if (!target.startsWith("<@") && !target == "") {
             message.reply("The user you wanted to kill is not a valid user. Please use the format: 'tys kill TARGET'.")
             return;
@@ -45,6 +44,10 @@ module.exports = {
         arg,
         message
     }) {
+        if (message.content.indexOf(">") == -1){
+            message.reply("The user you wanted to resurrect is not a valid user. Please use the format: 'tys resurrect TARGET'.")
+            return;
+        }
         var target = arg.slice("resurrect".length + 1, message.content.indexOf(">") - 3)
         if (!target.startsWith("<@") && !target == "") {
             message.reply("The user you wanted to resurrect is not a valid user. Please use the format 'tys resurrect TARGET'.")
