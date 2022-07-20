@@ -81,7 +81,7 @@ module.exports = {
             message.reply(`${message.author} dropped the nuke to ${place} but everyone there magically survived! **MAGIK!**`)
             message.reply(`POV ${place}: https://c.tenor.com/8gpittE_R9oAAAAM/running-dodging.gif`)
         } else {
-            message.reply(`Bro stop dreaming nukes and go get a work man :joy:`)
+            message.reply(`Bro stop dreaming nukes and go get a job man :joy:`)
         }
     }
 }
