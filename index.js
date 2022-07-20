@@ -10,7 +10,8 @@ require('dotenv').config()
 // Require the necessary discord.js classes
 const {
     Client,
-    Intents
+    Intents,
+    MessageEmbed
 } = require('discord.js');
 
 // Create a new client instance
