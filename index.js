@@ -1,3 +1,5 @@
+// Replit = running code, Uptimerobot = making replit alive
+
 // to do list: 3. welcome message 4. help command 5. other functions
 
 let commands = require('./js/commands.js')
