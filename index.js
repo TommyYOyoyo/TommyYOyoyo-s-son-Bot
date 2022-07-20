@@ -26,6 +26,14 @@ const prefix = 'tys';
 // Login to Discord with your client's token
 client.login(process.env.BOT_TOKEN);
 
+var http = require('http');
+
+http.createServer(function (req, res) {
+    res.write("I'm alive");
+    res.end();
+}).listen(8080);
+
+
 let myId = process.env.BOT_ID
 
 // When the client is ready, run this code (only once)
