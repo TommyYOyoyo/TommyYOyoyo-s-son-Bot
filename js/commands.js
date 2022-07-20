@@ -14,7 +14,12 @@ module.exports = {
         arg,
         message
     }) {
+        if (message.content.indexOf(">") == -1){
+            message.reply("The user you wanted to kill is not a valid user. Please use the format: 'tys kill TARGET'.")
+            return;
+        }
         var target = arg.slice("kill".length + 1, message.content.indexOf(">") - 3)
+        console.log(target)
         if (!target.startsWith("<@") && !target == "") {
             message.reply("The user you wanted to kill is not a valid user. Please use the format: 'tys kill TARGET'.")
             return;
@@ -71,15 +76,15 @@ module.exports = {
         }
         var randnum = Math.floor(Math.random() * 100)
         if (randnum > 50 && randnum <= 90) {
-            message.reply(`${message.author} dropped a nuke to ${place}, TOTAL DESTRUCTION!`)
-            message.reply(`POV ${place}: ${nukeGifLinks[Math.floor(Math.random() * nukeGifLinks.length)]}`)
+            message.reply(`${message.author} dropped a nuke to ${place}, TOTAL DESTRUCTION! \nPOV ${place}: ${nukeGifLinks[Math.floor(Math.random() * nukeGifLinks.length)]}`)
+            //message.reply(`POV ${place}: ${nukeGifLinks[Math.floor(Math.random() * nukeGifLinks.length)]}`)
         } else if (randnum > 20 && randnum < 30) {
             message.reply(`${message.author} tried to drop a nuke but the Navy intercepted him. **WHAT A KARMA!**`)
         } else if (randnum > 30 && randnum <= 49){
             message.reply(`${message.author} dropped the nuke to ${place} but the malprogrammed nuke flew back to his plane. **TO BE CONTINUE...**`)
         } else if (randnum > 90 && randnum <= 100){
-            message.reply(`${message.author} dropped the nuke to ${place} but everyone there magically survived! **MAGIK!**`)
-            message.reply(`POV ${place}: https://c.tenor.com/8gpittE_R9oAAAAM/running-dodging.gif`)
+            message.reply(`${message.author} dropped the nuke to ${place} but everyone there magically survived! **MAGIK!** \nPOV ${place}: https://c.tenor.com/8gpittE_R9oAAAAM/running-dodging.gif`)
+            //message.reply(`POV ${place}: https://c.tenor.com/8gpittE_R9oAAAAM/running-dodging.gif`)
         } else {
             message.reply(`Bro stop dreaming nukes and go get a job man :joy:`)
         }
