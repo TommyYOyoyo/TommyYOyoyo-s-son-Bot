@@ -120,7 +120,7 @@ client.on("messageCreate", (message) => {
 })
 
 client.on("messageCreate", (message) => {
-    if(message.channelId == process.env.DANK_TRENDING_AC && !message.author.bot){
+    if(message.channelId == process.env.DANK_TRENDING_AC && !message.author.bot && message.author == process.env.TRENDING_WEBH){
       message.reply("<@&958883453707907173>")
     }
 })
